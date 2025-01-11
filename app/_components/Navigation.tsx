@@ -1,9 +1,15 @@
-import Hero from "./Hero";
+import Image from "next/image";
+
+import Logo from "./../../public/logo.png";
 
 const navigation = () => {
   return (
     <header className="bg-[#F4F7FB]">
-      <Hero />
+      <div className="flex justify-between content-center justify-items-center py-4 mx-20">
+        <Image src={Logo} width={80} alt="Logo" />
+        <div>navigation</div>
+        <div>navigation</div>
+      </div>
     </header>
   );
 };
