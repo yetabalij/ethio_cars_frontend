@@ -1,3 +1,14 @@
+import Image from "next/image";
+
+import HeroIMage from "@/public/HeroRight.png";
+
 export default function Home() {
-  return <main className="text-3xl text-blue-500 mt-5 mx-20">Hello</main>;
+  return (
+    <main className="grid grid-cols-2 justify-between bg-[#F4F7FB]">
+      <div className="grid-cols-1">Left</div>
+      <div className="grid-cols-1">
+        <Image src={HeroIMage} alt="Hero" />
+      </div>
+    </main>
+  );
 }
