@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={dongle.className}>
-        <Navigation className={aclonica.className}/>
+        <Navigation className={aclonica.className} />
         {children}
       </body>
     </html>
