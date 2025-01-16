@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import HeroImage from "@/public/HeroRight.png";
+import { Button } from "@/components/ui/button";
 
 const Hero = () => {
   return (
@@ -20,9 +21,7 @@ const Hero = () => {
               </p>
             </div>
             <div>
-              <button className="text-white bg-[#B52F31] px-12 py-1 rounded-sm text-xl">
-                Post A Car
-              </button>
+              <Button className="bg-[#B52F31] px-12 py-1 rounded-sm text-xl">Post A Car</Button>
             </div>
           </div>
         </div>
