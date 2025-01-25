@@ -1,20 +1,29 @@
-import { useRouter } from "next/router";
-import { useEffect } from "react";
+"use client";
 
-const withAuth = (WrappedComponent: React.ComponentType)=>{
-    return function ProtectedRoute(){
-        const router = useRouter()
+import { useRouter } from "next/navigation"; // For App Router's navigation
+import { useState, useEffect } from "react";
 
-        useEffect(()=>{
-            const session = localStorage.getItem("adminSession")
+const withAuth = (WrappedComponent: React.ComponentType) => {
+  return function ProtectedRoute() {
+    const router = useRouter();
+    const [isAuthorized, setIsAuthorized] = useState(false);
 
-            if(!session){
-                router.push("/admin/login")
-            }
-        },[router]);
+    useEffect(() => {
+      const session = localStorage.getItem("adminSession");
+      if (session) {
+        setIsAuthorized(true); // Allow access if session exists
+      } else {
+        router.push("/admin/login"); // Redirect to login if no session
+      }
+    }, [router]);
 
-        return <WrappedComponent/>
+    // Render nothing or a loading indicator until session check is complete
+    if (!isAuthorized) {
+      return null; // Customize this loading message as needed
     }
-}
 
-export default withAuth
+    return <WrappedComponent />;
+  };
+};
+
+export default withAuth;

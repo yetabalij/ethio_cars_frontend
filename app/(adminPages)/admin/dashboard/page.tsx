@@ -1,9 +1,9 @@
-import React from 'react'
+"use client";
+
+import withAuth from "@/app/_hoc/withAuth";
 
 const AdminDshboard = () => {
-  return (
-    <div>AdminDshboard</div>
-  )
-}
+  return <div>AdminDshboard</div>;
+};
 
-export default AdminDshboard
+export default withAuth(AdminDshboard);
