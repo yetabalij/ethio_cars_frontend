@@ -1,6 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation"; // For navigation in Next.js
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -17,13 +18,21 @@ import { Input } from "@/components/ui/input";
 const formSchema = z.object({
   username: z
     .string()
-    .min(4, { message: "Username must be at least 4 characters" }),
+    .min(1, { message: "Username must be at least 1 characters" }),
   password: z
     .string()
-    .min(4, { message: "Password must be at least 4 characters" }),
+    .min(1, { message: "Password must be at least 1 characters" }),
 });
 
+// Default Admin Credentials
+const defaultCredentials = {
+  username: "admin",
+  password: "password123",
+};
+
 const AdminLogin = () => {
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -33,13 +42,27 @@ const AdminLogin = () => {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+    const { username, password } = values;
+
+    // Check credentials
+    if (
+      username === defaultCredentials.username &&
+      password === defaultCredentials.password
+    ) {
+      // Create session (store in localStorage for simplicity)
+      localStorage.setItem("adminSession", "true");
+
+      // Redirect to the admin dashboard
+      router.push("/admin/dashboard");
+    } else {
+      alert("Invalid credentials! Please try again.");
+    }
   }
 
   return (
     <div>
       <section className="w-[25%] mx-auto mt-10">
-        <h1 className="text-center">Admin Login</h1>
+        <h1 className="text-center text-2xl font-bold">Admin Login</h1>
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
