@@ -1,19 +1,16 @@
 import type { Metadata } from "next";
 import { Dongle } from "next/font/google";
-import { Aclonica } from "next/font/google";
+
 import "./globals.css";
 
-import Navigation from "./_components/Navigation";
+
 
 const dongle = Dongle({
   subsets: ["latin"],
   weight: ["300", "400", "700"],
 });
 
-const aclonica = Aclonica({
-  subsets: ["latin"],
-  weight: ["400"],
-});
+
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -28,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={dongle.className}>
-        <Navigation className={aclonica.className} />
+        
         {children}
       </body>
     </html>

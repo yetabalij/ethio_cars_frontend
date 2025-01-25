@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/menubar";
 import { Menu } from "lucide-react";
 
-const navigation = ({ className }: { className?: string }) => {
+const PublicNavigation = ({ className }: { className?: string }) => {
   return (
     <header className="bg-[#F4F7FB]">
       <div className="flex justify-between items-center py-4 mx-6 md:mx-20">
@@ -85,4 +85,4 @@ const navigation = ({ className }: { className?: string }) => {
   );
 };
 
-export default navigation;
+export default PublicNavigation;
