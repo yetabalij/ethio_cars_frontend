@@ -3,7 +3,7 @@ import Link from "next/link";
 const AdminNavigation = () => {
   return (
     <div>
-      <aside className="bg-gray-800 text-white w-64 min-h-screen p-4">
+      <aside className="bg-gray-800 text-white min-h-screen p-4">
         <nav className="space-y-4">
           <h2 className="text-xl font-bold mb-4">Admin Panel</h2>
           <Link href="/admin/dashboard" className="block hover:text-gray-400">
