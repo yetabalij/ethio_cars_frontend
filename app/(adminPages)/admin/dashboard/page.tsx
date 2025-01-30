@@ -45,7 +45,7 @@ const AdminDashboard = () => {
     try {
       // Call your POST API here
       const response = await axios.post(
-        "http://localhost:5000/api/engine-cars/",
+        "https://ethiocarsapi.onrender.com/api/engine-cars/",
         data
       ); // Replace with your API endpoint
       console.log("API Response:", response.data);
